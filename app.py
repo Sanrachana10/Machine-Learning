@@ -216,9 +216,9 @@ body { background: #080c14; }
 }
 
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-justify-items: center; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* ✅ THIS centers last row */
   gap: 20px;
   max-width: 1100px;
   margin: 0 auto;
