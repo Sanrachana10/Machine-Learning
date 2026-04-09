@@ -412,7 +412,7 @@ body { background: #080c14; }
     <div class="college-heading">Shri G.S. Institute of Technology &amp; Science</div>
     <div class="dept-subtitle">Department of <strong>Information Technology</strong></div>
     <div class="event-tag">&#9632; Lab Exhibition 2026 &nbsp;·&nbsp; Live</div>
-    <img src="https://tse4.mm.bing.net/th/id/OIP.5mJW-asixFrgwq9fIXkOVwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" style="display:block;width:80px; margin:18px auto 0; opacity:0.9;" />
+    <img src="https://tse4.mm.bing.net/th/id/OIP.5mJW-asixFrgwq9fIXkOVwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" style="display:block;width:160px; margin:18px auto 0;mix-blend-mode: lighten; opacity:0.9;" />
     <div class="header-rule"></div>
   </div>
 
