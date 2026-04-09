@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="SGSITS Lab Exhibition 2026",
@@ -7,23 +8,28 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Hide Streamlit chrome
 st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
 #MainMenu, footer, header { visibility: hidden !important; }
-.stApp,
-[data-testid="stAppViewContainer"],
-[data-testid="stAppViewBlockContainer"],
-[data-testid="stMain"],
-[data-testid="stMainBlockContainer"],
-[data-testid="stVerticalBlock"] {
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"],
+[data-testid="stMainBlockContainer"], [data-testid="stVerticalBlock"] {
   background: #080c14 !important;
 }
 .block-container { padding: 0 !important; max-width: 100% !important; }
 [data-testid="stMainBlockContainer"] { padding: 0 !important; }
+</style>
+""", unsafe_allow_html=True)
 
-/* ── KEYFRAMES ── */
+components.html("""
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #080c14; }
+
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(32px); }
   to   { opacity:1; transform:translateY(0); }
@@ -45,12 +51,7 @@ st.markdown("""
   0%   { transform: translateY(-100%); }
   100% { transform: translateY(400%); }
 }
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
 
-/* ── PAGE SHELL ── */
 .page-shell {
   min-height: 100vh;
   background:
@@ -63,7 +64,6 @@ st.markdown("""
   padding-bottom: 80px;
 }
 
-/* ── DECORATIVE GRID BG ── */
 .grid-bg {
   position: fixed;
   inset: 0;
@@ -75,22 +75,15 @@ st.markdown("""
   z-index: 0;
 }
 
-/* ── TOP ACCENT BAR ── */
 .top-bar {
   height: 2px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    #0ea5e9 20%,
-    #38bdf8 40%,
-    #67e8f9 50%,
-    #38bdf8 60%,
-    #0ea5e9 80%,
-    transparent 100%);
+    transparent 0%, #0ea5e9 20%, #38bdf8 40%, #67e8f9 50%,
+    #38bdf8 60%, #0ea5e9 80%, transparent 100%);
   position: relative;
   z-index: 10;
 }
 
-/* ── FLOATING ORBS ── */
 .orb {
   position: fixed;
   border-radius: 50%;
@@ -111,7 +104,6 @@ st.markdown("""
   animation: drift 18s ease-in-out infinite reverse;
 }
 
-/* ── HEADER ── */
 .header-section {
   text-align: center;
   padding: 72px 40px 48px;
@@ -167,10 +159,7 @@ st.markdown("""
   text-transform: uppercase;
   margin-bottom: 8px;
 }
-.dept-subtitle strong {
-  color: #94a3b8;
-  font-weight: 500;
-}
+.dept-subtitle strong { color: #94a3b8; font-weight: 500; }
 
 .event-tag {
   display: inline-block;
@@ -197,13 +186,11 @@ st.markdown("""
 }
 
 .header-rule {
-  width: 1px;
-  height: 60px;
+  width: 1px; height: 60px;
   background: linear-gradient(to bottom, rgba(56,189,248,0.4), transparent);
   margin: 32px auto 0;
 }
 
-/* ── SECTION LABEL ── */
 .section-label {
   text-align: center;
   margin: 0 0 44px;
@@ -225,15 +212,13 @@ st.markdown("""
 .section-label-inner::before,
 .section-label-inner::after {
   content: '';
-  width: 60px;
-  height: 1px;
+  width: 60px; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(56,189,248,0.3));
 }
 .section-label-inner::after {
   background: linear-gradient(90deg, rgba(56,189,248,0.3), transparent);
 }
 
-/* ── CARDS GRID ── */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -245,9 +230,6 @@ st.markdown("""
   z-index: 10;
 }
 
-/* ── THE CARD TRICK:
-   <a> has NO class/style (passes Streamlit sanitizer)
-   Inner .card-inner does ALL the visual work          ── */
 .cards-grid a {
   text-decoration: none !important;
   display: block;
@@ -276,8 +258,7 @@ st.markdown("""
 .card-inner::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
+  top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(56,189,248,0.5), transparent);
   transform: scaleX(0);
   transition: transform 0.4s ease;
@@ -348,12 +329,9 @@ st.markdown("""
   transition: gap 0.25s ease, color 0.25s;
 }
 .cards-grid a:hover .card-cta { gap: 14px; color: #38bdf8; }
-.card-cta-arrow {
-  transition: transform 0.25s ease;
-}
+.card-cta-arrow { transition: transform 0.25s ease; }
 .cards-grid a:hover .card-cta-arrow { transform: translateX(4px); }
 
-/* corner bracket decoration */
 .corner-tl, .corner-br {
   position: absolute;
   width: 14px; height: 14px;
@@ -375,7 +353,6 @@ st.markdown("""
   border-color: rgba(56,189,248,0.5);
 }
 
-/* ── STATS ROW ── */
 .stats-row {
   display: flex;
   justify-content: center;
@@ -407,7 +384,6 @@ st.markdown("""
   color: #334155;
 }
 
-/* ── FOOTER ── */
 .page-footer {
   text-align: center;
   margin-top: 52px;
@@ -420,14 +396,14 @@ st.markdown("""
   z-index: 10;
 }
 </style>
-
+</head>
+<body>
 <div class="page-shell">
   <div class="grid-bg"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="top-bar"></div>
 
-  <!-- HEADER -->
   <div class="header-section">
     <div class="institute-eyebrow">
       <div class="eyebrow-dot"></div>
@@ -439,12 +415,10 @@ st.markdown("""
     <div class="header-rule"></div>
   </div>
 
-  <!-- SECTION LABEL -->
   <div class="section-label">
     <div class="section-label-inner">Student Project Showcase</div>
   </div>
 
-  <!-- CARDS -->
   <div class="cards-grid">
 
     <a href="https://machine-failure-predictor-h28hyojxcxoxon5fybywcd.streamlit.app/" target="_blank">
@@ -509,7 +483,6 @@ st.markdown("""
 
   </div>
 
-  <!-- STATS ROW -->
   <div class="stats-row">
     <div class="stat-item">
       <div class="stat-num">5</div>
@@ -527,4 +500,6 @@ st.markdown("""
 
   <div class="page-footer">&copy; 2026 &nbsp;·&nbsp; SGSITS &nbsp;·&nbsp; Department of Information Technology</div>
 </div>
-""", unsafe_allow_html=True)
+</body>
+</html>
+""", height=1200, scrolling=True)
