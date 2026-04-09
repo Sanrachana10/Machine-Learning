@@ -413,7 +413,7 @@ body { background: #080c14; }
     <div class="dept-subtitle">Department of <strong>Information Technology</strong></div>
     <div class="event-tag">&#9632; Lab Exhibition 2026 &nbsp;·&nbsp; Live</div>
   
-   <img src="https://raw.githubusercontent.com/Sanrachana10/Machine-Learning/main/logo.png"
+   <img src="https://raw.githubusercontent.com/Sanrachana10/Machine-Learning/main/logo.webp"
      style="
        display:block;
        margin:22px auto 0;
