@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. THEME & ANIMATION CSS
+# 2. THEME & ANIMATION CSS (Cleaned to prevent raw code leakage)
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono&display=swap');
@@ -31,23 +31,22 @@ st.markdown("""
     .block-container { padding: 60px !important; }
     header, footer { visibility: hidden; }
 
-    /* Centered Header Section */
     .showcase-header {
         text-align: center;
         margin-bottom: 80px;
     }
     
     .college-name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 400;
         color: #94a3b8;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
     
     .dept-name {
-        font-size: 3.8rem;
+        font-size: clamp(2.5rem, 5vw, 4rem);
         font-weight: 800;
         color: white;
         letter-spacing: -0.04em;
@@ -66,7 +65,6 @@ st.markdown("""
         display: inline-block;
     }
 
-    /* Cards Layout */
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -81,11 +79,11 @@ st.markdown("""
         border: 1px solid var(--border);
         border-radius: 24px;
         padding: 40px;
-        text-decoration: none !important;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: flex;
         flex-direction: column;
         height: 100%;
+        text-decoration: none !important;
     }
 
     .pcard:hover {
@@ -102,7 +100,6 @@ st.markdown("""
         font-weight: 700;
         color: white;
         margin-bottom: 15px;
-        line-height: 1.3;
     }
 
     .card-desc {
@@ -123,14 +120,10 @@ st.markdown("""
         align-items: center;
         gap: 10px;
     }
-
-    /* Accessibility and functional clean-up */
-    a { text-decoration: none !important; }
-
 </style>
 """, unsafe_allow_html=True)
 
-# 3. CENTERED HEADER SECTION
+# 3. HEADER
 st.markdown("""
 <div class="showcase-header">
     <div class="college-name">Shri Govindram Seksaria Institute of Technology and Science</div>
@@ -139,11 +132,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 4. UPDATED PROJECT CARDS
-# Note: Using standard <a> tags to avoid Streamlit JS blocks.
+# 4. PROJECT CARDS (Using a single clean block to ensure rendering)
 st.markdown("""
 <div class="cards-grid">
-
     <a href="https://machine-failure-predictor-h28hyojxcxoxon5fybywcd.streamlit.app/" target="_blank">
         <div class="pcard">
             <div class="card-icon">⚙️</div>
@@ -171,7 +162,7 @@ st.markdown("""
         </div>
     </a>
 
-    <a href="#" target="_blank">
+    <a href="https://predictor-8c5xjsvmo49exmvyml53fk.streamlit.app/" target="_blank">
         <div class="pcard">
             <div class="card-icon">😊</div>
             <div class="card-title">Smile Detector Model</div>
@@ -180,7 +171,7 @@ st.markdown("""
         </div>
     </a>
 
-    <a href="#" target="_blank">
+    <a href="https://kth-action-recognition-sclujdd3svncxzmjgcduaj.streamlit.app/" target="_blank">
         <div class="pcard">
             <div class="card-icon">🎙️</div>
             <div class="card-title">Sanskrit Transcription</div>
@@ -188,6 +179,5 @@ st.markdown("""
             <div class="card-link">Launch Transcription →</div>
         </div>
     </a>
-
 </div>
 """, unsafe_allow_html=True)
