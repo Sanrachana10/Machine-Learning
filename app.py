@@ -21,53 +21,6 @@ st.markdown("""
 [data-testid="stHorizontalBlock"] { background: #0b1f3a !important; }
 .block-container { padding: 0 !important; max-width: 100% !important; }
 [data-testid="stMainBlockContainer"] { padding: 0 !important; }
-
-.project-card {
-  text-decoration: none;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 14px;
-  padding: 32px 28px 28px;
-  display: block;
-  transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
-  position: relative;
-  overflow: hidden;
-}
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  border-color: rgba(201,168,76,0.35);
-}
-.card-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: rgba(201,168,76,0.13);
-  line-height: 1;
-  margin-bottom: 14px;
-}
-.card-emoji { font-size: 2rem; margin-bottom: 12px; }
-.card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #e8e0d0;
-  margin-bottom: 8px;
-}
-.card-desc {
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: #8a9bb5;
-  line-height: 1.6;
-  margin-bottom: 22px;
-}
-.card-cta {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #c9a84c;
-}
 </style>
 
 <div style="min-height:100vh; background: radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.05) 0%, transparent 50%), linear-gradient(160deg,#0b1f3a 0%,#091729 60%,#0d2040 100%); padding-bottom:80px; font-family:'DM Sans',sans-serif;">
@@ -95,45 +48,55 @@ st.markdown("""
 
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1100px; margin:0 auto; padding:0 40px;">
 
-    <a href="https://your-app-1.streamlit.app" target="_blank" class="project-card">
-      <div class="card-num">01</div>
-      <div class="card-emoji">🔬</div>
-      <div class="card-title">MotionIQ</div>
-      <div class="card-desc">AI-powered human action recognition for rehabilitation monitoring and sports biomechanics analysis.</div>
-      <span class="card-cta">Launch App &nbsp;→</span>
-    </a>
+    <div onclick="window.open('https://your-app-1.streamlit.app','_blank')" style="cursor:pointer; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:32px 28px 28px; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4)';this.style.borderColor='rgba(201,168,76,0.35)';"
+         onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='rgba(255,255,255,0.09)';">
+      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:rgba(201,168,76,0.13); line-height:1; margin-bottom:14px;">01</div>
+      <div style="font-size:2rem; margin-bottom:12px;">🔬</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#e8e0d0; margin-bottom:8px;">MotionIQ</div>
+      <div style="font-size:0.82rem; font-weight:300; color:#8a9bb5; line-height:1.6; margin-bottom:22px;">AI-powered human action recognition for rehabilitation monitoring and sports biomechanics analysis.</div>
+      <span style="font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c;">Launch App &nbsp;→</span>
+    </div>
 
-    <a href="https://your-app-2.streamlit.app" target="_blank" class="project-card">
-      <div class="card-num">02</div>
-      <div class="card-emoji">🧠</div>
-      <div class="card-title">MindMap AI</div>
-      <div class="card-desc">Natural language processing tool for extracting key concepts and generating visual knowledge graphs.</div>
-      <span class="card-cta">Launch App &nbsp;→</span>
-    </a>
+    <div onclick="window.open('https://your-app-2.streamlit.app','_blank')" style="cursor:pointer; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:32px 28px 28px; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4)';this.style.borderColor='rgba(201,168,76,0.35)';"
+         onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='rgba(255,255,255,0.09)';">
+      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:rgba(201,168,76,0.13); line-height:1; margin-bottom:14px;">02</div>
+      <div style="font-size:2rem; margin-bottom:12px;">🧠</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#e8e0d0; margin-bottom:8px;">MindMap AI</div>
+      <div style="font-size:0.82rem; font-weight:300; color:#8a9bb5; line-height:1.6; margin-bottom:22px;">Natural language processing tool for extracting key concepts and generating visual knowledge graphs.</div>
+      <span style="font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c;">Launch App &nbsp;→</span>
+    </div>
 
-    <a href="https://your-app-3.streamlit.app" target="_blank" class="project-card">
-      <div class="card-num">03</div>
-      <div class="card-emoji">📊</div>
-      <div class="card-title">DataViz Studio</div>
-      <div class="card-desc">Interactive data visualization dashboard for exploring and presenting complex datasets with ease.</div>
-      <span class="card-cta">Launch App &nbsp;→</span>
-    </a>
+    <div onclick="window.open('https://your-app-3.streamlit.app','_blank')" style="cursor:pointer; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:32px 28px 28px; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4)';this.style.borderColor='rgba(201,168,76,0.35)';"
+         onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='rgba(255,255,255,0.09)';">
+      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:rgba(201,168,76,0.13); line-height:1; margin-bottom:14px;">03</div>
+      <div style="font-size:2rem; margin-bottom:12px;">📊</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#e8e0d0; margin-bottom:8px;">DataViz Studio</div>
+      <div style="font-size:0.82rem; font-weight:300; color:#8a9bb5; line-height:1.6; margin-bottom:22px;">Interactive data visualization dashboard for exploring and presenting complex datasets with ease.</div>
+      <span style="font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c;">Launch App &nbsp;→</span>
+    </div>
 
-    <a href="https://your-app-4.streamlit.app" target="_blank" class="project-card">
-      <div class="card-num">04</div>
-      <div class="card-emoji">🌐</div>
-      <div class="card-title">NetGuard</div>
-      <div class="card-desc">Real-time network intrusion detection system powered by machine learning anomaly detection.</div>
-      <span class="card-cta">Launch App &nbsp;→</span>
-    </a>
+    <div onclick="window.open('https://your-app-4.streamlit.app','_blank')" style="cursor:pointer; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:32px 28px 28px; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4)';this.style.borderColor='rgba(201,168,76,0.35)';"
+         onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='rgba(255,255,255,0.09)';">
+      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:rgba(201,168,76,0.13); line-height:1; margin-bottom:14px;">04</div>
+      <div style="font-size:2rem; margin-bottom:12px;">🌐</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#e8e0d0; margin-bottom:8px;">NetGuard</div>
+      <div style="font-size:0.82rem; font-weight:300; color:#8a9bb5; line-height:1.6; margin-bottom:22px;">Real-time network intrusion detection system powered by machine learning anomaly detection.</div>
+      <span style="font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c;">Launch App &nbsp;→</span>
+    </div>
 
-    <a href="https://your-app-5.streamlit.app" target="_blank" class="project-card">
-      <div class="card-num">05</div>
-      <div class="card-emoji">💬</div>
-      <div class="card-title">SentiScope</div>
-      <div class="card-desc">Sentiment analysis engine for social media streams with live emotion tracking and reporting.</div>
-      <span class="card-cta">Launch App &nbsp;→</span>
-    </a>
+    <div onclick="window.open('https://your-app-5.streamlit.app','_blank')" style="cursor:pointer; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:32px 28px 28px; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4)';this.style.borderColor='rgba(201,168,76,0.35)';"
+         onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='rgba(255,255,255,0.09)';">
+      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:rgba(201,168,76,0.13); line-height:1; margin-bottom:14px;">05</div>
+      <div style="font-size:2rem; margin-bottom:12px;">💬</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#e8e0d0; margin-bottom:8px;">SentiScope</div>
+      <div style="font-size:0.82rem; font-weight:300; color:#8a9bb5; line-height:1.6; margin-bottom:22px;">Sentiment analysis engine for social media streams with live emotion tracking and reporting.</div>
+      <span style="font-size:0.72rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c;">Launch App &nbsp;→</span>
+    </div>
 
   </div>
 
