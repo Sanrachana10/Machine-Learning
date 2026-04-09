@@ -1,141 +1,59 @@
 import streamlit as st
 
-# 1. PAGE SETUP
 st.set_page_config(
-    page_title="SGSITS — Lab Exhibition 2026",
+    page_title="SGSITS Lab Exhibition 2026",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# 2. THEME & ANIMATION CSS (Cleaned to prevent raw code leakage)
+# 1. CLEANED CSS (Removed comments and extra whitespace)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono&display=swap');
-
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono&display=swap');
     :root {
         --primary: #10b981;
-        --bg-deep: #0f172a;
+        --bg: #0f172a;
         --card-bg: rgba(30, 41, 59, 0.6);
         --border: rgba(16, 185, 129, 0.2);
     }
-
-    .stApp {
-        background-color: var(--bg-deep);
-        background-image: 
-            radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%), 
-            radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0, transparent 50%);
-        font-family: 'Syne', sans-serif;
-    }
-
-    .block-container { padding: 60px !important; }
+    .stApp { background-color: var(--bg); font-family: 'Syne', sans-serif; }
+    .block-container { padding: 40px 60px !important; }
     header, footer { visibility: hidden; }
-
-    .showcase-header {
-        text-align: center;
-        margin-bottom: 80px;
-    }
-    
-    .college-name {
-        font-size: 1.1rem;
-        font-weight: 400;
-        color: #94a3b8;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-    }
-    
-    .dept-name {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
-        color: white;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-        margin-bottom: 25px;
-    }
-
-    .exhibit-badge {
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--primary);
-        padding: 8px 24px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        border: 1px solid var(--border);
-        display: inline-block;
-    }
-
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
+    .showcase-header { text-align: center; margin-bottom: 60px; }
+    .dept-name { font-size: 3rem; font-weight: 800; color: white; margin-bottom: 10px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     .pcard {
         background: var(--card-bg);
-        backdrop-filter: blur(10px);
         border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 40px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 20px;
+        padding: 30px;
+        transition: 0.3s;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        height: 100%;
         text-decoration: none !important;
     }
-
-    .pcard:hover {
-        transform: translateY(-12px);
-        border-color: var(--primary);
-        background: rgba(30, 41, 59, 0.9);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-icon { font-size: 2.5rem; margin-bottom: 20px; }
-    
-    .card-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: white;
-        margin-bottom: 15px;
-    }
-
-    .card-desc {
-        color: #94a3b8;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
-        flex-grow: 1;
-    }
-
-    .card-link {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+    .pcard:hover { transform: translateY(-8px); border-color: var(--primary); background: rgba(30, 41, 59, 0.9); }
+    .card-icon { font-size: 2rem; margin-bottom: 15px; }
+    .card-title { font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 10px; }
+    .card-desc { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+    .card-link { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--primary); text-transform: uppercase; }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. HEADER
+# 2. HEADER
 st.markdown("""
 <div class="showcase-header">
-    <div class="college-name">Shri Govindram Seksaria Institute of Technology and Science</div>
-    <h1 class="dept-name">Department of<br>Information Technology</h1>
-    <div class="exhibit-badge">LAB EXHIBITION 2026</div>
+    <div class="dept-name">Department of Information Technology</div>
+    <div style="color:#10b981; font-weight:700; letter-spacing:0.1em;">SGSITS LAB EXHIBITION 2026</div>
 </div>
 """, unsafe_allow_html=True)
 
-# 4. PROJECT CARDS (Using a single clean block to ensure rendering)
+# 3. CONSOLIDATED CARDS (Crucial: Keep the string "tight" to avoid text-bleeding)
 st.markdown("""
 <div class="cards-grid">
-    <a href="https://machine-failure-predictor-h28hyojxcxoxon5fybywcd.streamlit.app/" target="_blank">
+    <a href="https://machine-failure-predictor-h28hyojxcxoxon5fybywcd.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div class="pcard">
             <div class="card-icon">⚙️</div>
             <div class="card-title">Machine Failure Prediction</div>
@@ -143,8 +61,7 @@ st.markdown("""
             <div class="card-link">Launch Analysis →</div>
         </div>
     </a>
-
-    <a href="https://kth-action-recognition-sclujdd3svncxzmjgcduaj.streamlit.app/" target="_blank">
+    <a href="https://kth-action-recognition-sclujdd3svncxzmjgcduaj.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div class="pcard">
             <div class="card-icon">⚡</div>
             <div class="card-title">KTH Action Recognition</div>
@@ -152,8 +69,7 @@ st.markdown("""
             <div class="card-link">Launch Neural System →</div>
         </div>
     </a>
-
-    <a href="https://predictor-8c5xjsvmo49exmvyml53fk.streamlit.app/" target="_blank">
+    <a href="https://predictor-8c5xjsvmo49exmvyml53fk.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div class="pcard">
             <div class="card-icon">🎓</div>
             <div class="card-title">Placement Predictor</div>
@@ -161,17 +77,15 @@ st.markdown("""
             <div class="card-link">Launch Predictor →</div>
         </div>
     </a>
-
-    <a href="https://predictor-8c5xjsvmo49exmvyml53fk.streamlit.app/" target="_blank">
+    <a href="#" style="text-decoration:none;">
         <div class="pcard">
             <div class="card-icon">😊</div>
             <div class="card-title">Smile Detector Model</div>
-            <div class="card-desc">Computer Vision application for facial expression analysis and real-time happiness index tracking.</div>
+            <div class="card-desc">Computer Vision application for facial expression analysis and real-time happiness tracking.</div>
             <div class="card-link">Deploy Vision →</div>
         </div>
     </a>
-
-    <a href="https://kth-action-recognition-sclujdd3svncxzmjgcduaj.streamlit.app/" target="_blank">
+    <a href="#" style="text-decoration:none;">
         <div class="pcard">
             <div class="card-icon">🎙️</div>
             <div class="card-title">Sanskrit Transcription</div>
