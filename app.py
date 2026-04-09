@@ -185,11 +185,7 @@ body { background: #080c14; }
   animation: scanline 2.5s ease-in-out infinite;
 }
 
-.header-rule {
-  width: 1px; height: 60px;
-  background: linear-gradient(to bottom, rgba(56,189,248,0.4), transparent);
-  margin: 32px auto 0;
-}
+
 
 .section-label {
   text-align: center;
@@ -423,9 +419,7 @@ body { background: #080c14; }
        padding:6px;
        box-shadow: 0 0 20px rgba(56,189,248,0.35);
      " />
-    <div class="header-rule"></div>
-  </div>
-
+  
   <div class="section-label">
     <div class="section-label-inner">Student Project Showcase</div>
   </div>
