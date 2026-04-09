@@ -412,7 +412,14 @@ body { background: #080c14; }
     <div class="college-heading">Shri G.S. Institute of Technology &amp; Science</div>
     <div class="dept-subtitle">Department of <strong>Information Technology</strong></div>
     <div class="event-tag">&#9632; Lab Exhibition 2026 &nbsp;·&nbsp; Live</div>
-    <img src="https://raw.githubusercontent.com/Sanrachana10/Machine-Learning/main/logo.png" style="display:block;width:160px; margin:22px auto 0;mix-blend-mode: lighten; opacity:0.9;filter: drop-shadow(0 0 18px rgba(56,189,248,0.35));" />
+  
+    <img src="https://raw.githubusercontent.com/Sanrachana10/Machine-Learning/main/logo.png"
+     style="
+       display:block;
+       margin:22px auto 0;
+       width:140px;
+       filter: drop-shadow(0 0 18px rgba(56,189,248,0.35));
+     " />
     <div class="header-rule"></div>
   </div>
 
