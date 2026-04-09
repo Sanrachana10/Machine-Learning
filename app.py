@@ -2,215 +2,192 @@ import streamlit as st
 
 # 1. PAGE SETUP
 st.set_page_config(
-    page_title="SGSITS — Department of IT Showcase",
+    page_title="SGSITS — Lab Exhibition 2026",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# 2. HIGH-IMPACT CSS (Glassmorphism + Hover Effects)
+# 2. THEME & ANIMATION CSS
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono&display=swap');
 
     :root {
         --primary: #10b981;
-        --bg: #0f172a;
-        --card-bg: rgba(30, 41, 59, 0.7);
-        --border: rgba(255, 255, 255, 0.1);
+        --bg-deep: #0f172a;
+        --card-bg: rgba(30, 41, 59, 0.6);
+        --border: rgba(16, 185, 129, 0.2);
     }
 
     .stApp {
-        background-color: var(--bg);
+        background-color: var(--bg-deep);
         background-image: 
-            radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 50%), 
-            radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0, transparent 50%);
-        font-family: 'Inter', sans-serif;
+            radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%), 
+            radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0, transparent 50%);
+        font-family: 'Syne', sans-serif;
     }
 
-    /* Remove Streamlit whitespace */
-    .block-container { padding: 40px 60px !important; }
+    .block-container { padding: 60px !important; }
     header, footer { visibility: hidden; }
 
+    /* Centered Header Section */
     .showcase-header {
         text-align: center;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
     
-    .showcase-title {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: white;
-        letter-spacing: -0.03em;
+    .college-name {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #94a3b8;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         margin-bottom: 10px;
     }
     
-    .showcase-subtitle {
-        color: #94a3b8;
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin: 0 auto;
+    .dept-name {
+        font-size: 3.8rem;
+        font-weight: 800;
+        color: white;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        margin-bottom: 25px;
     }
 
-    /* THE CARDS GRID */
+    .exhibit-badge {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--primary);
+        padding: 8px 24px;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        display: inline-block;
+    }
+
+    /* Cards Layout */
     .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-        perspective: 1000px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .pcard {
         background: var(--card-bg);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(10px);
         border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 35px;
-        position: relative;
+        border-radius: 24px;
+        padding: 40px;
+        text-decoration: none !important;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        height: 100%;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        height: 100%;
     }
 
     .pcard:hover {
-        transform: translateY(-10px) rotateX(5deg);
+        transform: translateY(-12px);
         border-color: var(--primary);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(16, 185, 129, 0.2);
+        background: rgba(30, 41, 59, 0.9);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
-    .card-bg-num {
-        position: absolute;
-        top: -10px;
-        right: 10px;
-        font-size: 6rem;
-        font-weight: 900;
-        color: rgba(255,255,255,0.03);
-        z-index: 0;
-        user-select: none;
-    }
-
-    .card-icon {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        display: block;
-        z-index: 1;
-    }
-
-    .card-title-text {
-        font-size: 1.5rem;
+    .card-icon { font-size: 2.5rem; margin-bottom: 20px; }
+    
+    .card-title {
+        font-size: 1.4rem;
         font-weight: 700;
         color: white;
-        margin-bottom: 12px;
-        z-index: 1;
+        margin-bottom: 15px;
+        line-height: 1.3;
     }
 
-    .card-desc-text {
+    .card-desc {
         color: #94a3b8;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         line-height: 1.6;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
         flex-grow: 1;
-        z-index: 1;
     }
 
-    .card-launch {
+    .card-link {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.75rem;
         color: var(--primary);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         display: flex;
         align-items: center;
-        gap: 8px;
-        transition: gap 0.3s;
+        gap: 10px;
     }
 
-    .pcard:hover .card-launch {
-        gap: 15px;
-    }
-
-    /* Glowing spot effect on hover */
-    .pcard::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(circle at var(--x) var(--y), rgba(16, 185, 129, 0.15), transparent 70%);
-        opacity: 0;
-        transition: opacity 0.3s;
-        pointer-events: none;
-    }
-    .pcard:hover::after { opacity: 1; }
+    /* Accessibility and functional clean-up */
+    a { text-decoration: none !important; }
 
 </style>
 """, unsafe_allow_html=True)
 
-# 3. HEADER SECTION
+# 3. CENTERED HEADER SECTION
 st.markdown("""
 <div class="showcase-header">
-    <h1 class="showcase-title">Department of IT</h1>
-    <p class="showcase-subtitle">Shri Govindram Seksaria Institute of Technology and Science</p>
-    <div style="margin-top: 20px;">
-        <span style="background: rgba(16,185,129,0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(16,185,129,0.3);">LAB EXHIBITION 2026</span>
-    </div>
+    <div class="college-name">Shri Govindram Seksaria Institute of Technology and Science</div>
+    <h1 class="dept-name">Department of<br>Information Technology</h1>
+    <div class="exhibit-badge">LAB EXHIBITION 2026</div>
 </div>
 """, unsafe_allow_html=True)
 
-# 4. THE CARDS (Natively compatible with Streamlit)
+# 4. UPDATED PROJECT CARDS
+# Note: Using standard <a> tags to avoid Streamlit JS blocks.
 st.markdown("""
 <div class="cards-grid">
 
-  <a href="https://your-app-1.streamlit.app" target="_blank" style="text-decoration:none;">
-    <div class="pcard">
-      <div class="card-bg-num">01</div>
-      <span class="card-icon">🔬</span>
-      <div class="card-title-text">MotionIQ</div>
-      <div class="card-desc-text">AI-powered human action recognition built with ConvLSTM for physical rehabilitation and elder care.</div>
-      <div class="card-launch">Explore System →</div>
-    </div>
-  </a>
+    <a href="https://machine-failure-predictor-h28hyojxcxoxon5fybywcd.streamlit.app/" target="_blank">
+        <div class="pcard">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">Machine Failure Prediction</div>
+            <div class="card-desc">Industrial IoT monitoring using the AI4I 2020 dataset to predict CNC sensor anomalies and tool wear.</div>
+            <div class="card-link">Launch Analysis →</div>
+        </div>
+    </a>
 
-  <a href="https://your-app-2.streamlit.app" target="_blank" style="text-decoration:none;">
-    <div class="pcard">
-      <div class="card-bg-num">02</div>
-      <span class="card-icon">🧠</span>
-      <div class="card-title-text">MindMap AI</div>
-      <div class="card-desc-text">Extracting hierarchical knowledge from dense academic PDFs using Transformer-based NLP.</div>
-      <div class="card-launch">Visualize Knowledge →</div>
-    </div>
-  </a>
+    <a href="https://kth-action-recognition-sclujdd3svncxzmjgcduaj.streamlit.app/" target="_blank">
+        <div class="pcard">
+            <div class="card-icon">⚡</div>
+            <div class="card-title">KTH Action Recognition</div>
+            <div class="card-desc">Spatiotemporal deep learning model for real-time human action classification (Boxing, Walking, Running).</div>
+            <div class="card-link">Launch Neural System →</div>
+        </div>
+    </a>
 
-  <a href="https://your-app-3.streamlit.app" target="_blank" style="text-decoration:none;">
-    <div class="pcard">
-      <div class="card-bg-num">03</div>
-      <span class="card-icon">📊</span>
-      <div class="card-title-text">DataViz Studio</div>
-      <div class="card-desc-text">Transforming complex institute datasets into interactive decision-making dashboards.</div>
-      <div class="card-launch">View Dashboard →</div>
-    </div>
-  </a>
+    <a href="https://predictor-8c5xjsvmo49exmvyml53fk.streamlit.app/" target="_blank">
+        <div class="pcard">
+            <div class="card-icon">🎓</div>
+            <div class="card-title">Placement Predictor</div>
+            <div class="card-desc">Analyzing engineering student records including CGPA and internships to forecast career outcomes.</div>
+            <div class="card-link">Launch Predictor →</div>
+        </div>
+    </a>
 
-  <a href="https://your-app-4.streamlit.app" target="_blank" style="text-decoration:none;">
-    <div class="pcard">
-      <div class="card-bg-num">04</div>
-      <span class="card-icon">🌐</span>
-      <div class="card-title-text">NetGuard</div>
-      <div class="card-desc-text">Anomaly-based intrusion detection using unsupervised machine learning for campus networks.</div>
-      <div class="card-launch">Secure Network →</div>
-    </div>
-  </a>
+    <a href="#" target="_blank">
+        <div class="pcard">
+            <div class="card-icon">😊</div>
+            <div class="card-title">Smile Detector Model</div>
+            <div class="card-desc">Computer Vision application for facial expression analysis and real-time happiness index tracking.</div>
+            <div class="card-link">Deploy Vision →</div>
+        </div>
+    </a>
 
-  <a href="https://your-app-5.streamlit.app" target="_blank" style="text-decoration:none;">
-    <div class="pcard">
-      <div class="card-bg-num">05</div>
-      <span class="card-icon">💬</span>
-      <div class="card-title-text">SentiScope</div>
-      <div class="card-desc-text">Multi-language sentiment analysis for social streams with real-time emotion mapping.</div>
-      <div class="card-launch">Analyze Sentiments →</div>
-    </div>
-  </a>
+    <a href="#" target="_blank">
+        <div class="pcard">
+            <div class="card-icon">🎙️</div>
+            <div class="card-title">Sanskrit Transcription</div>
+            <div class="card-desc">Automated Speech Recognition (ASR) tailored for low-resource Sanskrit audio datasets.</div>
+            <div class="card-link">Launch Transcription →</div>
+        </div>
+    </a>
 
 </div>
 """, unsafe_allow_html=True)
